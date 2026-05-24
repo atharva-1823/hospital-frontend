@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import axios from "axios";
-
 import toast from "react-hot-toast";
 
 import PatientModal from "../components/PatientModal";
+
+import api from "../api/axiosConfig";
 
 const PatientManagement = () => {
 
@@ -19,18 +19,14 @@ const PatientManagement = () => {
   const patientsPerPage = 5;
 
   useEffect(() => {
-
     fetchPatients();
-
   }, []);
 
   const fetchPatients = async () => {
 
     try {
 
-      const response = await axios.get(
-        "https://hospital-backend-to52.onrender.com/patients"
-      );
+      const response = await api.get("/patients");
 
       setPatients(response.data);
 
@@ -50,9 +46,7 @@ const PatientManagement = () => {
 
     try {
 
-      await axios.delete(
-      `https://hospital-backend-to52.onrender.com/patients/${id}`
-    );
+      await api.delete(`/patients/${id}`);
 
       toast.success("Patient deleted successfully");
 
