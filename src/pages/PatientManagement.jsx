@@ -29,7 +29,7 @@ const PatientManagement = () => {
     try {
 
       const response = await axios.get(
-        "http://localhost:8080/patients"
+        "https://hospital-backend-to52.onrender.com/patients"
       );
 
       setPatients(response.data);
@@ -51,8 +51,8 @@ const PatientManagement = () => {
     try {
 
       await axios.delete(
-        `http://localhost:8080/patients/${id}`
-      );
+      `https://hospital-backend-to52.onrender.com/patients/${id}`
+    );
 
       toast.success("Patient deleted successfully");
 
